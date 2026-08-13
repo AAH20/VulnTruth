@@ -1,0 +1,13 @@
+{
+  "name": "@vulntruth/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "vulntruth": "src/index.js"
+  },
+  "dependencies": {
+    "@vulntruth/adapters": "0.1.0",
+    "@vulntruth/engine": "0.1.0",
+    "@vulntruth/report": "0.1.0"
+  }
+}

@@ -1,0 +1,47 @@
+name: VulnTruth Scanner Reality Check
+description: Compare exported Trivy, Grype, and OSV findings and explain decision-relevant disagreements.
+author: A2Z SOC
+
+branding:
+  icon: shield
+  color: purple
+
+inputs:
+  artifact:
+    description: Immutable artifact name or digest represented by the reports.
+    required: true
+  trivy-report:
+    description: Path to a Trivy JSON report.
+    required: false
+  grype-report:
+    description: Path to a Grype JSON report.
+    required: false
+  osv-report:
+    description: Path to an OSV-Scanner JSON report.
+    required: false
+  kev-catalog:
+    description: Path to a CISA KEV JSON catalog or controlled snapshot.
+    required: false
+  output-directory:
+    description: Directory for JSON and Markdown evidence.
+    required: false
+    default: vulntruth-artifacts
+  fail-on:
+    description: Set to patch-now to fail when a consensus KEV requires immediate patching.
+    required: false
+    default: none
+
+runs:
+  using: composite
+  steps:
+    - name: Analyze scanner evidence
+      shell: bash
+      env:
+        INPUT_ARTIFACT: ${{ inputs.artifact }}
+        INPUT_TRIVY: ${{ inputs.trivy-report }}
+        INPUT_GRYPE: ${{ inputs.grype-report }}
+        INPUT_OSV: ${{ inputs.osv-report }}
+        INPUT_KEV: ${{ inputs.kev-catalog }}
+        INPUT_OUTPUT: ${{ inputs.output-directory }}
+        INPUT_FAIL_ON: ${{ inputs.fail-on }}
+      run: node "$GITHUB_ACTION_PATH/apps/action/src/index.js"

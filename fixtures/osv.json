@@ -1,0 +1,6 @@
+{
+  "results": [{"packages": [
+    {"package":{"name":"openssl","version":"3.0.1","ecosystem":"debian","purl":"pkg:deb/debian/openssl@3.0.1"},"vulnerabilities":[{"id":"CVE-2024-0001","fixed_version":"3.0.2","database_specific":{"severity":"HIGH"}}]},
+    {"package":{"name":"zlib","version":"1.2.13","ecosystem":"debian","purl":"pkg:deb/debian/zlib@1.2.13"},"vulnerabilities":[{"id":"CVE-2024-0004","database_specific":{"severity":"MEDIUM"}}]}
+  ]}]
+}

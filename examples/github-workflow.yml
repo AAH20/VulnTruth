@@ -1,0 +1,30 @@
+name: Scanner reality check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  vulntruth:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Generate these reports with your pinned scanner versions first.
+      - uses: a2zsoc/vulntruth@v0.1.0
+        with:
+          artifact: ghcr.io/acme/api@${{ github.sha }}
+          trivy-report: reports/trivy.json
+          grype-report: reports/grype.json
+          osv-report: reports/osv.json
+          kev-catalog: reports/known_exploited_vulnerabilities.json
+          output-directory: vulntruth-artifacts
+          fail-on: patch-now
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vulntruth-evidence
+          path: vulntruth-artifacts/

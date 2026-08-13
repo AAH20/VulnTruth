@@ -1,0 +1,8 @@
+{
+  "source": {"target":{"userInput":"demo-api:1.0"}},
+  "matches": [
+    {"vulnerability":{"id":"CVE-2024-0001","severity":"High","fix":{"versions":["3.0.2"]},"dataSource":"https://security-tracker.debian.org"},"artifact":{"name":"openssl","version":"3.0.1","type":"deb","purl":"pkg:deb/debian/openssl@3.0.1"}},
+    {"vulnerability":{"id":"CVE-2024-0002","severity":"High","fix":{"versions":["8.0.2"]}},"artifact":{"name":"curl","version":"8.0.0","type":"debian","purl":"pkg:deb/debian/curl@8.0.0"}},
+    {"vulnerability":{"id":"CVE-2024-0004","severity":"Medium","fix":{"versions":[]}},"artifact":{"name":"zlib","version":"1.2.13","type":"debian","purl":"pkg:deb/debian/zlib@1.2.13"}}
+  ]
+}
